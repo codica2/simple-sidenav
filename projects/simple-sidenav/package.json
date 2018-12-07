@@ -1,0 +1,10 @@
+{
+  "name": "simple-sidenav",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^7.1.0",
+    "@angular/core": "^7.1.0",
+    "scss-bundle": "^2.4.0",
+    "cpx": "^1.5.0"
+  }
+}

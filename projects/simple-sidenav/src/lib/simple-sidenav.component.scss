@@ -1,0 +1,60 @@
+@mixin d-flex($value) {
+  display: flex;
+  justify-content: $value;
+  align-items: center;
+}
+
+.simple-sidenav {
+  max-width: 360px;
+
+  &__item {
+    background-color: red;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__item-content {
+    @include d-flex('flex-start');
+
+    padding: 5px 15px;
+    border-bottom: 1px solid #000;
+  }
+
+  &__icon {
+    width: 35px;
+    margin-right: 8px;
+  }
+
+  .active {
+    background-color: green;
+  }
+}
+
+.simple-sidenav-submenu {
+  overflow: hidden;
+
+  &__item {
+    background-color: #d6d6d6;
+  }
+
+  &__item-content {
+    @include d-flex('flex-start');
+
+    padding: 5px 15px;
+    border-bottom: 1px solid #000;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    width: 35px;
+    margin-right: 8px;
+  }
+
+  &__text {
+
+  }
+}

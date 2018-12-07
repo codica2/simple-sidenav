@@ -133,7 +133,47 @@
           }
         }
       }
+    },
+    "simple-sidenav": {
+      "root": "projects/simple-sidenav",
+      "sourceRoot": "projects/simple-sidenav/src",
+      "projectType": "library",
+      "prefix": "sm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/simple-sidenav/tsconfig.lib.json",
+            "project": "projects/simple-sidenav/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/simple-sidenav/src/test.ts",
+            "tsConfig": "projects/simple-sidenav/tsconfig.spec.json",
+            "karmaConfig": "projects/simple-sidenav/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/simple-sidenav/tsconfig.lib.json",
+              "projects/simple-sidenav/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "simple-sidenav-app"
+  "defaultProject": "simple-sidenav-app",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
