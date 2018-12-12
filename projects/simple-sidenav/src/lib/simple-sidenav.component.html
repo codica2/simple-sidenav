@@ -1,16 +1,11 @@
 <div class="simple-sidenav">
-  <div class="simple-sidenav__item" *ngFor="let item of menuItems; let index" [ngClass]="{'active': activeOne === index}">
-    <div class="simple-sidenav__item-content" (click)="onNavClick(index)">
-      <img class="simple-sidenav__icon" [src]="item.icon" alt="icon" *ngIf="item.icon">
-      <span class="simple-sidenav__text">{{ item.name }}</span>
-    </div>
-    <div class="simple-sidenav-submenu" *ngIf="activeOne === index" @openClose>
-      <div class="simple-sidenav-submenu__item" *ngFor="let subitem of item.submenu">
-        <div class="simple-sidenav-submenu__item-content">
-          <img class="simple-sidenav-submenu__icon" [src]="subitem.icon" alt="icon" *ngIf="subitem.icon">
-          <span class="simple-sidenav-submenu__text">{{ subitem.name }}</span>
-        </div>
+  <ng-container *ngIf="show">
+    <div class="simple-sidenav__item" *ngFor="let item of menu; let menuIndex = index" @fadeIn @close>
+      <div class="simple-sidenav__item-content" (click)="onNavClick(item, menuIndex)" [ngClass]="{'active': item.id === activeOne.id}">
+        <img class="simple-sidenav__icon" [src]="item.icon" alt="icon" *ngIf="item.icon">
+        <span class="simple-sidenav__text">{{ item.name }}</span>
       </div>
+      <sm-simple-sidenav [menu]="activeOne.menu" [show]="item.id === activeOne.id && item.menu"></sm-simple-sidenav>
     </div>
-  </div>
+  </ng-container>
 </div>
