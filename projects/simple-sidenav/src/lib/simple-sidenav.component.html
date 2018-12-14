@@ -5,7 +5,11 @@
         <img class="simple-sidenav__icon" [src]="item.icon" alt="icon" *ngIf="item.icon">
         <span class="simple-sidenav__text">{{ item.name }}</span>
       </div>
-      <sm-simple-sidenav [menu]="activeOne.menu" [show]="item.id === activeOne.id && item.menu"></sm-simple-sidenav>
+      <sm-simple-sidenav
+        [menu]="activeOne.menu"
+        (onSidenav)="notifyParent($event)"
+        [show]="item.id === activeOne.id && item.menu">
+      </sm-simple-sidenav>
     </div>
   </ng-container>
 </div>

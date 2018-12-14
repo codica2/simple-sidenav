@@ -1,4 +1,12 @@
-import { Component, Input, ViewEncapsulation, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  ViewEncapsulation,
+  OnChanges,
+  SimpleChanges,
+  Output,
+  EventEmitter
+} from '@angular/core';
 import { fadeIn, fadeOut } from './animations/animations';
 import { SimpleMenu } from './interfaces/simple-menu';
 
@@ -12,6 +20,14 @@ import { SimpleMenu } from './interfaces/simple-menu';
 export class SimpleSidenavComponent implements OnChanges {
   @Input() menu: SimpleMenu;
   @Input() show: boolean = true;
+  @Output()
+  onSidenav: EventEmitter<{
+    id: string|number,
+    index: number
+  }> = new EventEmitter<{
+    id: string|number,
+    index: number
+  }>();
 
   activeOne: SimpleMenu = {};
 
@@ -22,7 +38,8 @@ export class SimpleSidenavComponent implements OnChanges {
   }
 
   onNavClick({ id, name, icon }: SimpleMenu, index: number): void {
-    if (Object.keys(this.activeOne).length > 0) {
+    this.notifyParent({ id, index });
+    if (this.activeOne.id === id) {
       this.activeOne = {};
       return;
     };
@@ -34,5 +51,9 @@ export class SimpleSidenavComponent implements OnChanges {
         }, 100 * i);
       })
     }
+  }
+
+  notifyParent(navItem): void {
+    this.onSidenav.emit(navItem);
   }
 }
