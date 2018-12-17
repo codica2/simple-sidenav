@@ -1,15 +1,19 @@
-<div class="simple-sidenav">
-  <ng-container *ngIf="show">
-    <div class="simple-sidenav__item" *ngFor="let item of menu; let menuIndex = index" @fadeIn @close>
-      <div class="simple-sidenav__item-content" (click)="onNavClick(item, menuIndex)" [ngClass]="{'active': item.id === activeOne.id}">
-        <img class="simple-sidenav__icon" [src]="item.icon" alt="icon" *ngIf="item.icon">
-        <span class="simple-sidenav__text">{{ item.name }}</span>
-      </div>
-      <sm-simple-sidenav
-        [menu]="activeOne.menu"
-        (onSidenav)="notifyParent($event)"
-        [show]="item.id === activeOne.id && item.menu">
-      </sm-simple-sidenav>
+<div class="simple-sidenav"
+  *ngIf="show && menu.length > 0"
+  [@fadeIn]="animate && animation && animation.in"
+  [@close]="animate && animation && animation.out">
+  <div class="simple-sidenav__item" *ngFor="let item of menu; let menuIndex = index">
+    <div class="simple-sidenav__item-content" (click)="onNavClick(item, menuIndex)" [ngClass]="{'active': item.id === activeOne.id}">
+      <img class="simple-sidenav__icon" [src]="item.icon" alt="icon" *ngIf="item.icon">
+      <span class="simple-sidenav__text">{{ item.name }}</span>
     </div>
-  </ng-container>
+    <sm-simple-sidenav
+      class="simple-sidenav-submenu"
+      [animate]="true"
+      [animation]="animation"
+      [menu]="activeOne.menu"
+      (onSidenav)="onSidenav.emit($event)"
+      [show]="item.id === activeOne.id && item.menu">
+    </sm-simple-sidenav>
+  </div>
 </div>

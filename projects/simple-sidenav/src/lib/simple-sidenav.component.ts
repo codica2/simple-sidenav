@@ -9,6 +9,7 @@ import {
 } from '@angular/core';
 import { fadeIn, fadeOut } from './animations/animations';
 import { SimpleMenu } from './interfaces/simple-menu';
+import { SimpleAnimation } from './interfaces/simple-animation';
 
 @Component({
   selector: 'sm-simple-sidenav',
@@ -18,8 +19,10 @@ import { SimpleMenu } from './interfaces/simple-menu';
   animations: [fadeIn, fadeOut]
 })
 export class SimpleSidenavComponent implements OnChanges {
-  @Input() menu: SimpleMenu;
+  @Input() menu: SimpleMenu[] = [];
   @Input() show: boolean = true;
+  @Input() animation: {in: SimpleAnimation, out: SimpleAnimation};
+  @Input() animate: boolean = false;
   @Output()
   onSidenav: EventEmitter<{
     id: string|number,
@@ -38,22 +41,12 @@ export class SimpleSidenavComponent implements OnChanges {
   }
 
   onNavClick({ id, name, icon }: SimpleMenu, index: number): void {
-    this.notifyParent({ id, index });
+    this.onSidenav.emit({ id, index });
     if (this.activeOne.id === id) {
       this.activeOne = {};
       return;
     };
-    this.activeOne = { menu: [], id, name, icon };
-    if (this.menu[index].menu) {
-      this.menu[index].menu.forEach((item: SimpleMenu, i: number) => {
-        setTimeout(() => {
-          this.activeOne.menu.push(item);
-        }, 100 * i);
-      })
-    }
-  }
-
-  notifyParent(navItem): void {
-    this.onSidenav.emit(navItem);
+    this.activeOne = { id, name, icon };
+    if (this.menu[index].menu) { this.activeOne.menu = this.menu[index].menu };
   }
 }
