@@ -10,13 +10,13 @@ import {
 
 const fadeIn = trigger('fadeIn', [
   transition('void => slide-in-stagger', [
-    query('.simple-sidenav__item .simple-sidenav__item:enter', style({
+    query(':enter', style({
       transform: 'translateX(-100%)',
       opacity: 0,
       height: 0,
       width: 0
     }), { optional: true }),
-    query('.simple-sidenav__item .simple-sidenav__item:enter', stagger(55, [animate("{{ duration }}ms", keyframes([
+    query(':enter', stagger(55, [animate("{{ duration }}ms", keyframes([
       style({ transform: 'translateX(-100%)', opacity: 0, height: 0, width: 0 }),
       style({ transform: 'translateX(5%)', opacity: 0.5, height: '*' }),
       style({ transform: 'translateX(-3%)', opacity: 0.6, height: '*' }),
