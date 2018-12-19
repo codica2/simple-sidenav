@@ -1,27 +1,17 @@
-@mixin d-flex($value) {
-  display: flex;
-  justify-content: $value;
-  align-items: center;
-}
-
-@mixin long-text-hidden {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
 .simple-sidenav {
   max-width: 360px;
   overflow: hidden;
 
   &__item {
-    margin: 3px 0 3px 15px;
+    margin-top: 3px;
     overflow: hidden;
   }
 
   &__item-content {
-    @include d-flex('flex-start');
-
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
     background-color: #d6d6d6;
     padding: 5px 15px;
     border-radius: 4px;
@@ -37,7 +27,18 @@
   }
 
   &__text {
-    @include long-text-hidden();
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  &__arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translate(0, -50%);
+    width: 30px;
+    height: 30px;
   }
 
   .active {

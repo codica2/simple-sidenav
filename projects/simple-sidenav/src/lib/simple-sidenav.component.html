@@ -6,6 +6,11 @@
     <div class="simple-sidenav__item-content" (click)="onNavClick(item, menuIndex)" [ngClass]="{'active': item.id === activeOne.id}">
       <img class="simple-sidenav__icon" [src]="item.icon" alt="icon" *ngIf="item.icon">
       <span class="simple-sidenav__text">{{ item.name }}</span>
+      <span class="simple-sidenav__arrow"
+        *ngIf="withArrow && item.menu"
+        [@rotate]="item.id === activeOne.id && item.menu ? 'rotated' : 'default'">
+        <svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg>
+      </span>
     </div>
     <sm-simple-sidenav
       class="simple-sidenav-submenu"
@@ -13,6 +18,7 @@
       [animation]="animation"
       [menu]="activeOne.menu"
       (onSidenav)="onSidenav.emit($event)"
+      [withArrow]="withArrow"
       [show]="item.id === activeOne.id && item.menu">
     </sm-simple-sidenav>
   </div>

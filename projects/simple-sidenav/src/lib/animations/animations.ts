@@ -5,7 +5,8 @@ import {
   transition,
   keyframes,
   stagger,
-  query
+  query,
+  state
 } from '@angular/animations';
 
 const fadeIn = trigger('fadeIn', [
@@ -32,6 +33,12 @@ const fadeIn = trigger('fadeIn', [
 
 const fadeOut = trigger('close', [
   transition('slide-out => void', [animate("{{ duration }}ms", style({ height: 0 }))], { params: { duration: 200 } })
+]);
+
+const rotate = trigger('rotate', [
+  state('default', style({ transform: 'translate(0,-50%) rotate(0)' })),
+  state('rotated', style({ transform: 'translate(0,-50%) rotate(90deg)' })),
+  transition('default <=> rotated', [animate('100ms')])
 ])
 
-export { fadeIn, fadeOut };
+export { fadeIn, fadeOut, rotate };

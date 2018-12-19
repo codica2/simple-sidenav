@@ -7,7 +7,7 @@ import {
   Output,
   EventEmitter
 } from '@angular/core';
-import { fadeIn, fadeOut } from './animations/animations';
+import { fadeIn, fadeOut, rotate } from './animations/animations';
 import { SimpleMenu } from './interfaces/simple-menu';
 import { SimpleAnimation } from './interfaces/simple-animation';
 
@@ -16,13 +16,14 @@ import { SimpleAnimation } from './interfaces/simple-animation';
   templateUrl: './simple-sidenav.component.html',
   styleUrls: ['./simple-sidenav.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  animations: [fadeIn, fadeOut]
+  animations: [fadeIn, fadeOut, rotate]
 })
 export class SimpleSidenavComponent implements OnChanges {
   @Input() menu: SimpleMenu[] = [];
   @Input() show: boolean = true;
   @Input() animation: {in: SimpleAnimation, out: SimpleAnimation};
   @Input() animate: boolean = false;
+  @Input() withArrow: boolean = true;
   @Output()
   onSidenav: EventEmitter<{
     id: string|number,

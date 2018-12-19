@@ -8,11 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "npm_pack": "cd dist/simple-sidenav && npm pack",
     "build_lib": "ng build simple-sidenav",
-    "package": "npm run build_lib && npm run build-mylib-styles && npm run cp-mylib-assets && npm run npm_pack",
-    "build-mylib-styles": "cpx \"./projects/simple-sidenav/src/lib/style/**/*\" \"./dist/simple-sidenav/style\" && scss-bundle -e ./projects/simple-sidenav/src/lib/style/styles.scss -d ./dist/simple-sidenav/style/styles.scss",
-    "cp-mylib-assets": "cpx \"./src/assets/**/*\" \"./dist/simple-sidenav/assets\""
+    "npm_pack": "cd dist/simple-sidenav && npm pack",
+    "package": "npm run build_lib && npm run npm_pack"
+
   },
   "private": true,
   "dependencies": {
