@@ -34,14 +34,20 @@
 
   &__arrow {
     position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translate(0, -50%);
     width: 30px;
     height: 30px;
+    right: 12px;
+    top: 50%;
+    transform: translate(0, -50%);
   }
 
   .active {
     background-color: #b9b9b9;
+  }
+}
+
+.simple-sidenav-submenu {
+  .simple-sidenav {
+    padding-left: 15px;
   }
 }

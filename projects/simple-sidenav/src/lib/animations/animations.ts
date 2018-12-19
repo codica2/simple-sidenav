@@ -36,8 +36,8 @@ const fadeOut = trigger('close', [
 ]);
 
 const rotate = trigger('rotate', [
-  state('default', style({ transform: 'translate(0,-50%) rotate(0)' })),
-  state('rotated', style({ transform: 'translate(0,-50%) rotate(90deg)' })),
+  state('default', style({ transform: 'translate(0, -50%) rotate(0)' })),
+  state('rotated', style({ transform: 'translate(0, -50%) rotate(90deg)' })),
   transition('default <=> rotated', [animate('100ms')])
 ])
 
