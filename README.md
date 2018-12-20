@@ -1,10 +1,13 @@
 <h1 align="center">Simple sidenav</h1>
----
-[![GitHub license](https://img.shields.io/github/license/raoulus/angular-simple-pagination.svg)]()
 
-## About
 
-**Simple sidenav** is a simple, easily customizable, animated menu, with the possibility of infinite nesting that was built specifically Angular apps.
+**Simple sidenav** is a simple, easily customizable, animated menu, with the possibility of infinite nesting that was built specifically for Angular apps.
+
+## Demos
+
+<p align="center">
+ <img src="src/assets/gifs/simple-sidenav.gif">
+</p>
 
 ## Installation
 
@@ -14,7 +17,7 @@ npm install simple-sidenav --save
 
 ## Usage
 
-Module
+**Module**
 
 ``` javascript
 # app.module.ts
@@ -39,7 +42,7 @@ import { SimpleSidenavModule } from 'simple-sidenav';
 export class AppModule { }
 
 ```
-Component
+**Component**
 
 ``` javascript
 # app.component.ts
@@ -53,15 +56,14 @@ import { SimpleMenu } from 'simple-sidenav';
 })
 export class AppComponent {
   menu: SimpleMenu[] = [...];
-  
-    onClick(item: {id: number|string, name: string, icon: string, index: number}) {
-      ...
-    }
+
+  onClick(item: {id: number|string, name: string, icon: string, index: number}) {
+    ...
   }
+}
 
 ```
-
-HTML
+**HTML**
 ``` html
 # app.component.html
 <sm-simple-sidenav
@@ -72,36 +74,36 @@ HTML
 </sm-simple-sidenav>
 ```
 
-[menu] prop example:
-``` json
+**[menu] prop example:**
+```json
 menu: SimpleMenu[] = [
-  { id: '1', name: 'Ruby on Rails', icon: 'assets/images/rails.png', menu: [
-    { id: '1', name: 'Models', menu: [
-      { id: '1', name: 'Active Record Basics' },
-      { id: '2', name: 'Active Record Migrations' },
-      { id: '3', name: 'Active Record Validations' },
-      { id: '4', name: 'Active Record Callbacks' },
-      { id: '5', name: 'Active Record Associations' },
-      { id: '6', name: 'Active Record Query Interface', menu: [...] }
+  { "id": "1", "name": "Ruby on Rails", "icon": "assets/images/rails.png", "menu": [
+    { "id": "1", "name": "Models", "menu": [
+      { "id": "1", "name": "Active Record Basics" },
+      { "id": "2", "name": "Active Record Migrations" },
+      { "id": "3", "name": "Active Record Validations" },
+      { "id": "4", "name": "Active Record Callbacks" },
+      { "id": "5", "name": "Active Record Associations" },
+      { "id": "6", "name": "Active Record Query Interface", "menu": [...] }
     ] },
     ] },
-  { id: '2', name: 'Angular', icon: 'assets/images/angular.png', menu: [...] },
+  { "id": "2", "name": "Angular", "icon": "assets/images/angular.png", "menu": [...] },
   ...
 ]
 ```
 > NOTE: `id` must be unique, `icon` is optional, `menu` can contain infinitife level of nested menu
 
-[animation] prop example:
+**[animation] prop example:**
 
 We have two tipes of animation, **in** and **out**. Value is a name of animation. Duration is an optional parameter that shows how long the animation should work.
 
 For **in:** we have two animation for choice `slide-in | slide-in-stagger`.
 
 For **out:** just one `slide-out`.
-``` json
+```json
 {
-  in: {value: 'slide-in-stagger'},
-  out: {value: 'slide-out', duration: 200}
+  "in": { "value": "slide-in-stagger" },
+  "out": { "value": "slide-out", "duration": "200" }
 }
 ```
 Don't want any of anymation just pass false ```[animation]="false"```
@@ -111,12 +113,10 @@ Don't want any of anymation just pass false ```[animation]="false"```
 | Props           | Default value | Type                   | Description                                                                          |
 | --------------- | ------------- | ---------------------- | ------------------------------------------------------------------------------------ |
 | `[menu]`        | `none`        | ```Array of objects``` | See example above. `Required field`.                                                 |
-| `[animation]`   | `false`       | ```object|boolean```   | Pass object with anmimation name. See example above. `Optional field`.               |
-| `(onSidenav)`   | `none`        | ```event listener```   | Pass callback function to listen for sidenav clicks. `$event` contains an `id` and `index` of clicked element.  |
+| `[animation]`   | `false`       | ```object or boolean```   | Pass object with anmimation name. See example above. `Optional field`.               |
+| `(onSidenav)`   | `none`        | ```callback function```   | Pass callback function to listen for sidenav clicks. `$event` contains an `id` and `index` of clicked element.  |
 | `[animate]`     | `false`       | ```boolean```          | Set to true if you want to animate first appearance of the sidenav `Optional field`. |
 | `[withArrow]`   | `true`    | ```boolean```              | Set to false if you want to hide arrow icon. `Optional field`. |
-
-## Demos
 
 ## License
 Timebot is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
