@@ -95,7 +95,7 @@ menu: SimpleMenu[] = [
 
 **[animation] prop example:**
 
-We have two tipes of animation, **in** and **out**. Value is a name of animation. Duration is an optional parameter that shows how long the animation should work.
+We have two types of animation, **in** and **out**. Value is a name of animation. Duration is an optional parameter that shows how long the animation should work.
 
 For **in:** we have two animation for choice `slide-in | slide-in-stagger`.
 
@@ -119,12 +119,12 @@ Don't want any of anymation just pass false ```[animation]="false"```
 | `[withArrow]`   | `true`    | ```boolean```              | Set to false if you want to hide arrow icon. `Optional field`. |
 
 ## License
-Timebot is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
+Simple sidenav is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
 
 ## About Codica
 
 [![Codica logo](https://www.codica.com/assets/images/logo/logo.svg)](https://www.codica.com)
 
-Timebot is maintained and funded by Codica. The names and logos for Codica are trademarks of Codica.
+Simple sidenav is maintained and funded by Codica. The names and logos for Codica are trademarks of Codica.
 
 We love open source software! See [our other projects](https://github.com/codica2) or [hire us](https://www.codica.com/) to design, develop, and grow your product.
