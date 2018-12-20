@@ -91,7 +91,7 @@ menu: SimpleMenu[] = [
   ...
 ]
 ```
-> NOTE: `id` must be unique, `icon` is optional, `menu` can contain infinitife level of nested menu
+> NOTE: `id` must be unique, `icon` is optional, `menu` can contain an infinitive level of nested menu
 
 **[animation] prop example:**
 
