@@ -9,9 +9,11 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build_lib": "ng build simple-sidenav",
+    "copy-license": "cp LICENSE dist/simple-sidenav/LICENSE",
+    "copy-readme": "cp README.md dist/simple-sidenav/README.md",
+    "copy-files": "npm run copy-license && npm run copy-readme",
     "npm_pack": "cd dist/simple-sidenav && npm pack",
-    "package": "npm run build_lib && npm run npm_pack"
-
+    "package": "npm run build_lib && npm run copy-files && npm run npm_pack"
   },
   "private": true,
   "dependencies": {
@@ -27,6 +29,7 @@
     "cpx": "^1.5.0",
     "rxjs": "~6.3.3",
     "scss-bundle": "^2.4.0",
+    "simple-sidenav": "file:dist/simple-sidenav/simple-sidenav-0.0.1.tgz",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },

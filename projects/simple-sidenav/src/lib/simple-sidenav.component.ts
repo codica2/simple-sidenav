@@ -27,9 +27,13 @@ export class SimpleSidenavComponent implements OnChanges {
   @Output()
   onSidenav: EventEmitter<{
     id: string|number,
+    name: string,
+    icon: string,
     index: number
   }> = new EventEmitter<{
     id: string|number,
+    name: string,
+    icon: string,
     index: number
   }>();
 
@@ -42,7 +46,7 @@ export class SimpleSidenavComponent implements OnChanges {
   }
 
   onNavClick({ id, name, icon }: SimpleMenu, index: number): void {
-    this.onSidenav.emit({ id, index });
+    this.onSidenav.emit({ id, name, icon, index });
     if (this.activeOne.id === id) {
       this.activeOne = {};
       return;

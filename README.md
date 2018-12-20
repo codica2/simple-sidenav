@@ -1,27 +1,130 @@
-# SimpleSidenavApp
+<h1 align="center">Simple sidenav</h1>
+---
+[![GitHub license](https://img.shields.io/github/license/raoulus/angular-simple-pagination.svg)]()
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.2.
+## About
 
-## Development server
+**Simple sidenav** is a simple, easily customizable, animated menu, with the possibility of infinite nesting that was built specifically Angular apps.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Installation
 
-## Code scaffolding
+``` bash
+npm install simple-sidenav --save
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+Module
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+``` javascript
+# app.module.ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-## Running unit tests
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { SimpleSidenavModule } from 'simple-sidenav';
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    SimpleSidenavModule
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
 
-## Running end-to-end tests
+```
+Component
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+``` javascript
+# app.component.ts
+import { Component } from '@angular/core';
+import { SimpleMenu } from 'simple-sidenav';
 
-## Further help
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
+  menu: SimpleMenu[] = [...];
+  
+    onClick(item: {id: number|string, name: string, icon: string, index: number}) {
+      ...
+    }
+  }
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+
+HTML
+``` html
+# app.component.html
+<sm-simple-sidenav
+  [menu]="menu"
+  [animation]="{in: {value: 'slide-in-stagger'}, out: {value: 'slide-out', duration: 200}}"
+  [withArrow]="true"
+  (onSidenav)="onClick($event)">
+</sm-simple-sidenav>
+```
+
+[menu] prop example:
+``` json
+menu: SimpleMenu[] = [
+  { id: '1', name: 'Ruby on Rails', icon: 'assets/images/rails.png', menu: [
+    { id: '1', name: 'Models', menu: [
+      { id: '1', name: 'Active Record Basics' },
+      { id: '2', name: 'Active Record Migrations' },
+      { id: '3', name: 'Active Record Validations' },
+      { id: '4', name: 'Active Record Callbacks' },
+      { id: '5', name: 'Active Record Associations' },
+      { id: '6', name: 'Active Record Query Interface', menu: [...] }
+    ] },
+    ] },
+  { id: '2', name: 'Angular', icon: 'assets/images/angular.png', menu: [...] },
+  ...
+]
+```
+> NOTE: `id` must be unique, `icon` is optional, `menu` can contain infinitife level of nested menu
+
+[animation] prop example:
+
+We have two tipes of animation, **in** and **out**. Value is a name of animation. Duration is an optional parameter that shows how long the animation should work.
+
+For **in:** we have two animation for choice `slide-in | slide-in-stagger`.
+
+For **out:** just one `slide-out`.
+``` json
+{
+  in: {value: 'slide-in-stagger'},
+  out: {value: 'slide-out', duration: 200}
+}
+```
+Don't want any of anymation just pass false ```[animation]="false"```
+
+## API
+
+| Props           | Default value | Type                   | Description                                                                          |
+| --------------- | ------------- | ---------------------- | ------------------------------------------------------------------------------------ |
+| `[menu]`        | `none`        | ```Array of objects``` | See example above. `Required field`.                                                 |
+| `[animation]`   | `false`       | ```object|boolean```   | Pass object with anmimation name. See example above. `Optional field`.               |
+| `(onSidenav)`   | `none`        | ```event listener```   | Pass callback function to listen for sidenav clicks. `$event` contains an `id` and `index` of clicked element.  |
+| `[animate]`     | `false`       | ```boolean```          | Set to true if you want to animate first appearance of the sidenav `Optional field`. |
+| `[withArrow]`   | `true`    | ```boolean```              | Set to false if you want to hide arrow icon. `Optional field`. |
+
+## Demos
+
+## License
+Timebot is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
+
+## About Codica
+
+[![Codica logo](https://www.codica.com/assets/images/logo/logo.svg)](https://www.codica.com)
+
+Timebot is maintained and funded by Codica. The names and logos for Codica are trademarks of Codica.
+
+We love open source software! See [our other projects](https://github.com/codica2) or [hire us](https://www.codica.com/) to design, develop, and grow your product.

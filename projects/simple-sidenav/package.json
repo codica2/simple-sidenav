@@ -1,6 +1,24 @@
 {
   "name": "simple-sidenav",
   "version": "1.0.0",
+  "description": "Simple sidenav module build for Angular app",
+  "keywords" :[
+    "angular",
+    "sidenav",
+    "sidebar",
+    "navigation",
+    "menu"
+  ],
+  "license" : "MIT",
+  "author": "Codica team",
+  "bugs": {
+    "url": "https://github.com/codica2/simple-sidenav/issues"
+  },
+  "homepage": "https://github.com/codica2/simple-sidenav#readme",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/codica2/simple-sidenav"
+  },
   "peerDependencies": {
     "@angular/common": "^7.1.0",
     "@angular/core": "^7.1.0",
