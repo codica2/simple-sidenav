@@ -23,6 +23,7 @@ npm install simple-sidenav --save
 # app.module.ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +36,8 @@ import { SimpleSidenavModule } from 'simple-sidenav';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SimpleSidenavModule
+    SimpleSidenavModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
@@ -56,6 +58,10 @@ import { SimpleMenu } from 'simple-sidenav';
 })
 export class AppComponent {
   menu: SimpleMenu[] = [...];
+  animation: SimpleAnimation = {
+    in: { value: 'slide-in-stagger' },
+    out: { value: 'slide-out', duration: 200 }
+  };
 
   onClick(item: {id: number|string, name: string, icon: string, index: number}) {
     ...
@@ -68,7 +74,8 @@ export class AppComponent {
 # app.component.html
 <sm-simple-sidenav
   [menu]="menu"
-  [animation]="{in: {value: 'slide-in-stagger'}, out: {value: 'slide-out', duration: 200}}"
+  [activeID]="'2'"
+  [animation]="animation"
   [withArrow]="true"
   (onSidenav)="onClick($event)">
 </sm-simple-sidenav>
@@ -91,13 +98,20 @@ menu: SimpleMenu[] = [
   ...
 ]
 ```
-> NOTE: `id` must be unique, `icon` is optional, `menu` can contain infinitife level of nested menu
+> NOTE: `id` must be unique, an `icon` is optional, a `menu` can contain an infinite level of nested menu
+
+**[activeID] prop example:**
+
+If you want menu to be opened by default at some position just pass an `id` of menu item to [activeID] prop.
+```javascript
+[activeID]="'yourMenuItemID'"
+```
 
 **[animation] prop example:**
 
 We have two types of animation, **in** and **out**. Value is a name of animation. Duration is an optional parameter that shows how long the animation should work.
 
-For **in:** we have two animation for choice `slide-in | slide-in-stagger`.
+For **in:** we have two animations for choice `slide-in | slide-in-stagger`.
 
 For **out:** just one `slide-out`.
 ```json
@@ -106,17 +120,18 @@ For **out:** just one `slide-out`.
   "out": { "value": "slide-out", "duration": "200" }
 }
 ```
-Don't want any of anymation just pass false ```[animation]="false"```
+If you don’t want any animations - just pass false into ```[animation]="false"```
 
 ## API
 
-| Props           | Default value | Type                   | Description                                                                          |
-| --------------- | ------------- | ---------------------- | ------------------------------------------------------------------------------------ |
-| `[menu]`        | `none`        | ```Array of objects``` | See example above. `Required field`.                                                 |
-| `[animation]`   | `false`       | ```object or boolean```   | Pass object with anmimation name. See example above. `Optional field`.               |
-| `(onSidenav)`   | `none`        | ```callback function```   | Pass callback function to listen for sidenav clicks. `$event` contains an `id` and `index` of clicked element.  |
-| `[animate]`     | `false`       | ```boolean```          | Set to true if you want to animate first appearance of the sidenav `Optional field`. |
-| `[withArrow]`   | `true`    | ```boolean```              | Set to false if you want to hide arrow icon. `Optional field`. |
+| Props           | Default value | Interface                   | Description                                                                          | Required |
+| --------------- | ------------- | --------------------------- | ------------------------------------------------------------------------------------ | -------- |
+| `[menu]`        | `none`        | ```SimpleMenu[]```          | See example above.                                                                   | `true` |
+| `[animation]`   | `false`       | ```SimpleAnimation```       | Pass object with animation name. See example above.                                 | `false`|
+| `(onSidenav)`   | `----`        | ```--------```              | Pass callback function to listen for sidenav clicks. `$event` contains an `id` and `index` of the clicked element.|`false`|
+| `[animate]`     | `false`       | ```boolean```               | Set to true if you want to animate the first appearance of the sidenav.                  | `false`|
+| `[withArrow]`   | `true`        | ```boolean```               | Set to false if you want to hide an arrow icon.                                         | `false`|
+| `[activeID]`    | `none`        | ```string```                | Pass an ID of menu item if you want it to be opened by default.                         | `false`|
 
 ## License
 Simple sidenav is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).

@@ -1,4 +1,4 @@
 export interface SimpleAnimation {
-  value?: string;
-  params?: {[key:string]: number|string};
+  in?: { value: string; duration?: string|number };
+  out?: { value: string; duration?: string|number };
 }
