@@ -131,7 +131,7 @@ If you don’t want any animations - just pass false into ```[animation]="false"
 | `(onSidenav)`   | `----`        | ```--------```              | Pass callback function to listen for sidenav clicks. `$event` contains an `id` and `index` of the clicked element.|`false`|
 | `[animate]`     | `false`       | ```boolean```               | Set to true if you want to animate the first appearance of the sidenav.                  | `false`|
 | `[withArrow]`   | `true`        | ```boolean```               | Set to false if you want to hide an arrow icon.                                         | `false`|
-| `[activeID]`    | `none`        | ```string```                | Pass an ID of menu item if you want it to be opened by defa.                         | `false`|
+| `[activeID]`    | `none`        | ```string```                | Pass an ID of menu item if you want it to be opened by default.                         | `false`|
 
 ## License
 Simple sidenav is Copyright © 2015-2018 Codica. It is released under the [MIT License](https://opensource.org/licenses/MIT).
