@@ -23,6 +23,7 @@ npm install simple-sidenav --save
 # app.module.ts
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -35,7 +36,8 @@ import { SimpleSidenavModule } from 'simple-sidenav';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SimpleSidenavModule
+    SimpleSidenavModule,
+    BrowserAnimationsModule
   ],
   bootstrap: [AppComponent]
 })
