@@ -8,6 +8,8 @@ import { SimpleMenu } from 'simple-sidenav';
 })
 export class AppComponent {
   title = 'simple-sidenav-app';
+  activeID = '1';
+
   menu: SimpleMenu[] = [
     { id: '1', name: 'Item 1', icon: 'https://cdn4.iconfinder.com/data/icons/camping-hand-drawn/40/camping_hand_drawn_icon_-07-512.png', menu: [{ id: '100', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png', menu: [{ id: '200', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '8', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '15', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' } ] }, { id: '22', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png', menu: [{ id: '29', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '36', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '43', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' } ] }, { id: '50', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png', menu: [{ id: '57', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '64', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '71', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' } ] } ] },
     { id: '2', name: 'Item 2', icon: 'https://cdn4.iconfinder.com/data/icons/camping-hand-drawn/40/camping_hand_drawn_icon_-07-512.png', menu: [{ id: '101', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png', menu: [{ id: '201', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '9', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '16', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' } ] }, { id: '23', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png', menu: [{ id: '30', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '37', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '44', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' } ] }, { id: '51', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png', menu: [{ id: '58', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '65', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '72', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' } ] } ] },
@@ -20,5 +22,9 @@ export class AppComponent {
 
   onSidenavClick(item) {
     console.log(item)
+  }
+
+  changeActive() {
+    this.activeID = `${+this.activeID + 1}`;
   }
 }
