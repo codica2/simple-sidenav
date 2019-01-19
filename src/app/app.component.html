@@ -1,10 +1,12 @@
 <sm-simple-sidenav
   [menu]="menu"
   [withArrow]="true"
-  [activeID]="'40'"
+  [activeID]="activeID"
   [animation]="{
     in: {value: 'slide-in-stagger'},
     out: {value: 'slide-out'}
   }"
   (onSidenav)="onSidenavClick($event)"></sm-simple-sidenav>
 <router-outlet></router-outlet>
+
+<button (click)="changeActive()">Trigger Active</button>
