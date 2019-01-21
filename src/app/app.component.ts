@@ -8,7 +8,7 @@ import { SimpleMenu } from 'simple-sidenav';
 })
 export class AppComponent {
   title = 'simple-sidenav-app';
-  activeID = '1';
+  activeID = '2';
 
   menu: SimpleMenu[] = [
     { id: '1', name: 'Item 1', icon: 'https://cdn4.iconfinder.com/data/icons/camping-hand-drawn/40/camping_hand_drawn_icon_-07-512.png', menu: [{ id: '100', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png', menu: [{ id: '200', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '8', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '15', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' } ] }, { id: '22', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png', menu: [{ id: '29', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '36', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '43', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' } ] }, { id: '50', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png', menu: [{ id: '57', name: 'Sub item 1', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '64', name: 'Sub item 2', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' }, { id: '71', name: 'Sub item 3', icon: 'https://cdn3.iconfinder.com/data/icons/other-icons/48/bike-512.png' } ] } ] },
@@ -25,6 +25,10 @@ export class AppComponent {
   }
 
   changeActive() {
+    if (+this.activeID > 10) {
+      this.activeID = ''
+      return
+    }
     this.activeID = `${+this.activeID + 1}`;
   }
 }
