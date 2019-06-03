@@ -29,7 +29,7 @@
     "cpx": "^1.5.0",
     "rxjs": "~6.3.3",
     "scss-bundle": "^2.4.0",
-    "simple-sidenav": "file:dist/simple-sidenav/simple-sidenav-1.1.1.tgz",
+    "simple-sidenav": "file:dist/simple-sidenav/simple-sidenav-1.1.4.tgz",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
   },
@@ -45,7 +45,7 @@
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~3.1.1",
+    "karma": "^4.1.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~1.1.2",
